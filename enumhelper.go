@@ -10,6 +10,12 @@ import (
 
 var nullBytes = []byte("null")
 
+// IsNull returns true iff err is an instance of IsNullError.
+func IsNull(err error) bool {
+	var x IsNullError
+	return errors.As(err, &x)
+}
+
 // EnumData holds data about one particular enum value.
 type EnumData struct {
 	// GoName is the Go constant name for this enum value.
